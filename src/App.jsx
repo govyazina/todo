@@ -3,17 +3,26 @@ import {useState} from "react";
 
 function App() {
     const [task, setTask] = useState()
+    const [taskList, setTaskList] = useState([])
+    const addTaskInList = (event) => {
+        event.preventDefault()
+        setTaskList(prevState => [...prevState, task])
+    }
 
     return (
         <>
-            <div className='container my-2'>
-                <form className="row g-3">
+            <main className='container my-2'>
+                <h1>ToDo list</h1>
+                <form
+                    className="row g-3"
+                    onSubmit={addTaskInList}
+                >
                     <div className="col-auto">
-                        <label htmlFor="inputTask" className="visually-hidden">Task</label>
+                        <label htmlFor="inputTask" className="visually-hidden">Task input</label>
                         <input
                             type="text" className="form-control"
                             id="inputTask"
-                            placeholder="write task here"
+                            placeholder="write your task here"
                             onChange={(event) => setTask(event.target.value)}
                         />
                     </div>
@@ -22,14 +31,19 @@ function App() {
                     </div>
                 </form>
                 <div className="tasks">
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            {task}
-                        </label>
-                    </div>
+                    {
+                        taskList.map((taskInList) => (
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                                <label className="form-check-label" htmlFor="flexCheckDefault">
+                                    {taskInList}
+                                </label>
+                            </div>
+                        ))
+                    }
+
                 </div>
-            </div>
+            </main>
         </>
     );
 }
