@@ -1,12 +1,18 @@
 import './App.css';
 import {useState} from "react";
+const generateID = (function (n) {
+    return function () {
+        return n++
+    }
+})(1)
+
 
 function App() {
     const [task, setTask] = useState()
     const [taskList, setTaskList] = useState([])
     const addTaskInList = (event) => {
         event.preventDefault()
-        setTaskList(prevState => [...prevState, task])
+        setTaskList(prevState => [...prevState, {task, id: generateID()}])
     }
 
     return (
@@ -33,10 +39,10 @@ function App() {
                 <div className="tasks">
                     {
                         taskList.map((taskInList) => (
-                            <div className="form-check">
+                            <div className="form-check" key={taskInList.id}>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                                    {taskInList}
+                                    {taskInList.task}
                                 </label>
                             </div>
                         ))
