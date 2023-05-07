@@ -1,8 +1,11 @@
-export function Task({task}) {
+export function Task({task, taskStatus, changeTaskStatus, id}) {
     return (
         <>
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                   onChange={(event) => console.log(event.target.checked)}/>
+            <input className="form-check-input"
+                   type="checkbox"
+                   id="flexCheckDefault"
+                   checked={taskStatus}
+                   onChange={() => changeTaskStatus(id)}/>
             <label className="form-check-label" htmlFor="flexCheckDefault">
                 {task}
             </label>

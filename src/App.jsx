@@ -15,8 +15,17 @@ function App() {
     const [taskList, setTaskList] = useState([])
     const addTaskInList = (event) => {
         event.preventDefault()
-        setTaskList(prevState => [...prevState, {task, id: generateID()}])
+        setTaskList(prevState => [...prevState, {task, id: generateID(), taskStatus: false}])
         setTask('')
+    }
+    const changeTaskStatus = (id) => {
+        const newArr = taskList.map(el => {
+            if(el.id === id) {
+                el.taskStatus = !el.taskStatus
+            }
+            return {...el}
+        })
+        setTaskList(newArr)
     }
 
     return (
@@ -30,6 +39,7 @@ function App() {
                 />
                 <TaskList
                     taskList={taskList}
+                    changeTaskStatus={changeTaskStatus}
                 />
             </main>
         </>
