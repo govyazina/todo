@@ -8,11 +8,12 @@ const generateID = (function (n) {
 
 
 function App() {
-    const [task, setTask] = useState()
+    const [task, setTask] = useState('')
     const [taskList, setTaskList] = useState([])
     const addTaskInList = (event) => {
         event.preventDefault()
         setTaskList(prevState => [...prevState, {task, id: generateID()}])
+        setTask('')
     }
 
     return (
@@ -29,6 +30,7 @@ function App() {
                             type="text" className="form-control"
                             id="inputTask"
                             placeholder="write your task here"
+                            value={task}
                             onChange={(event) => setTask(event.target.value)}
                         />
                     </div>
@@ -40,7 +42,7 @@ function App() {
                     {
                         taskList.map((taskInList) => (
                             <div className="form-check" key={taskInList.id}>
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={(event) => console.log(event.target.checked)}/>
                                 <label className="form-check-label" htmlFor="flexCheckDefault">
                                     {taskInList.task}
                                 </label>
