@@ -1,5 +1,8 @@
 import './App.css';
 import {useState} from "react";
+import {TaskList} from "./components/TaskList/TaskList";
+import {Form} from "./components/Form/Form";
+
 const generateID = (function (n) {
     return function () {
         return n++
@@ -20,37 +23,14 @@ function App() {
         <>
             <main className='container my-2'>
                 <h1>ToDo list</h1>
-                <form
-                    className="row g-3"
-                    onSubmit={addTaskInList}
-                >
-                    <div className="col-auto">
-                        <label htmlFor="inputTask" className="visually-hidden">Task input</label>
-                        <input
-                            type="text" className="form-control"
-                            id="inputTask"
-                            placeholder="write your task here"
-                            value={task}
-                            onChange={(event) => setTask(event.target.value)}
-                        />
-                    </div>
-                    <div className="col-auto">
-                        <button type="submit" className="btn btn-primary mb-3">+</button>
-                    </div>
-                </form>
-                <div className="tasks">
-                    {
-                        taskList.map((taskInList) => (
-                            <div className="form-check" key={taskInList.id}>
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={(event) => console.log(event.target.checked)}/>
-                                <label className="form-check-label" htmlFor="flexCheckDefault">
-                                    {taskInList.task}
-                                </label>
-                            </div>
-                        ))
-                    }
-
-                </div>
+                <Form
+                    addTaskInList={addTaskInList}
+                    setTask={setTask}
+                    task={task}
+                />
+                <TaskList
+                    taskList={taskList}
+                />
             </main>
         </>
     );
