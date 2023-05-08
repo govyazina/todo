@@ -24,7 +24,7 @@ function App() {
                 el.taskStatus = !el.taskStatus
             }
             return {...el}
-        })
+        }).sort((a, b) => a.taskStatus - b.taskStatus)
         setTaskList(newArr)
     }
 
