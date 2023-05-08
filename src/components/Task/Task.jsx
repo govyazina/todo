@@ -6,7 +6,7 @@ export function Task({task, taskStatus, changeTaskStatus, id}) {
                    id="flexCheckDefault"
                    checked={taskStatus}
                    onChange={() => changeTaskStatus(id)}/>
-            <label className="form-check-label" htmlFor="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault" style={taskStatus ? {textDecorationLine: 'line-through'} : {textDecorationLine: 'none'}}>
                 {task}
             </label>
         </>
