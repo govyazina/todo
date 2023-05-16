@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Form} from "../Form/Form";
 import {TaskList} from "../TaskList/TaskList";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
 
 const generateID = (function (n) {
 	return function () {
@@ -10,7 +11,7 @@ const generateID = (function (n) {
 
 export const Main = () => {
 	const [task, setTask] = useState('')
-	const [taskList, setTaskList] = useState([])
+	const [taskList, setTaskList] = useLocalStorage('taskList', [])
 	const addTaskInList = (event) => {
 		event.preventDefault()
 		setTaskList(prevState => [...prevState, {task, id: generateID(), taskStatus: false}])
