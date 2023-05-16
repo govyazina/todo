@@ -27,7 +27,7 @@ export const Main = () => {
 	}
 	return (
 		<main className='container my-2'>
-			<h1>ToDo list</h1>
+			<h1>let's to do it!</h1>
 			<Form
 				addTaskInList={addTaskInList}
 				setTask={setTask}
