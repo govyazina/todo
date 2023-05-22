@@ -1,6 +1,9 @@
 import {Task} from "../Task/Task";
+import {useContext} from "react";
+import {GlobalContext} from "../../contexts/globalContext";
 
-export const TaskList = ({taskList, changeTaskStatus}) => {
+export const TaskList = () => {
+	const {taskList, changeTaskStatus} = useContext(GlobalContext)
 	return (
 		<div className="tasks">
 			{

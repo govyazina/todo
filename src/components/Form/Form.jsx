@@ -1,4 +1,8 @@
-export const Form = ({setTask, addTaskInList, task}) => {
+import {useContext} from "react";
+import {GlobalContext} from "../../contexts/globalContext";
+
+export const Form = () => {
+    const {setTask, addTaskInList, task} = useContext(GlobalContext)
     return (
         <form
             className="row g-3"

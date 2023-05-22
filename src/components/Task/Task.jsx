@@ -1,4 +1,8 @@
-export function Task({task, taskStatus, changeTaskStatus, id}) {
+import {useContext} from "react";
+import {GlobalContext} from "../../contexts/globalContext";
+
+export function Task({task, taskStatus, id}) {
+    const {changeTaskStatus} = useContext(GlobalContext)
     return (
         <>
             <input className="form-check-input"
