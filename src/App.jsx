@@ -3,8 +3,7 @@ import {Main} from "./components/Main/Main";
 import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
 import {GlobalContext} from "./contexts/globalContext";
-import {useReducer, useState} from "react";
-import {useLocalStorage} from "./hooks/useLocalStorage";
+import {useReducer} from "react";
 import {reducer} from "./reducers/reducer";
 
 
