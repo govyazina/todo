@@ -15,6 +15,11 @@ export function reducer(state, action) {
 
             return {...state, taskList: newList}
         }
+        case 'DELETE_TASK': {
+            const id = action.payload
+            const newList = state.taskList.filter(el => el.id !== id)
+            return {...state, taskList: newList}
+        }
         default: {
             return state
         }

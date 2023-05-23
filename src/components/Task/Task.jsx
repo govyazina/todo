@@ -9,16 +9,31 @@ export function Task({task, taskStatus, id}) {
             payload: id
         })
     }
+
+    const deleteTask = (id) => {
+        dispatch({
+            type: 'DELETE_TASK',
+            payload: id
+        })
+
+    }
     return (
         <>
-            <input className="form-check-input"
-                   type="checkbox"
-                   id="flexCheckDefault"
-                   checked={taskStatus}
-                   onChange={() => changeTaskStatus(id)}/>
-            <label className="form-check-label" htmlFor="flexCheckDefault" style={taskStatus ? {textDecorationLine: 'line-through'} : {textDecorationLine: 'none'}}>
+            <label className="form-check-label" htmlFor="flexCheckDefault"
+                   style={taskStatus ? {textDecorationLine: 'line-through'} : {textDecorationLine: 'none'}}>
+                <input className="form-check-input"
+                       type="checkbox"
+                       id="flexCheckDefault"
+                       checked={taskStatus}
+                       onChange={() => changeTaskStatus(id)}/>
                 {task}
             </label>
+            <button
+                type="button"
+                className="btn btn-secondary ms-2"
+                onClick={() => deleteTask(id)}>
+                Delete
+            </button>
         </>
     )
 }
