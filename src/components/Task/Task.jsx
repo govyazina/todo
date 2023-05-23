@@ -2,17 +2,11 @@ import {useContext} from "react";
 import {GlobalContext} from "../../contexts/globalContext";
 
 export function Task({task, taskStatus, id}) {
-    const {state, dispatch} = useContext(GlobalContext)
+    const {dispatch} = useContext(GlobalContext)
     const changeTaskStatus = (id) => {
-        const newList = state.taskList.map(el => {
-            if(el.id === id) {
-                el.taskStatus = !el.taskStatus
-            }
-            return {...el}
-        }).sort((a, b) => a.taskStatus - b.taskStatus)
         dispatch({
             type: 'CHANGE_TASK_STATUS',
-            payload: newList
+            payload: id
         })
     }
     return (
