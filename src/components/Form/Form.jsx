@@ -1,8 +1,32 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {GlobalContext} from "../../contexts/globalContext";
 
+const generateID = (function (n) {
+    return function () {
+        return n++
+    }
+})(1)
+
 export const Form = () => {
-    const {setTask, addTaskInList, task} = useContext(GlobalContext)
+    const {dispatch} = useContext(GlobalContext)
+    const [task, setTask] = useState('')
+
+    const addTaskInList = (event) => {
+        event.preventDefault()
+
+        if (task) {
+            dispatch({
+                    type: 'ADD_TASK',
+                    payload: {
+                        task,
+                        id: generateID(),
+                        taskStatus: false
+                    }
+                }
+            )
+        }
+        setTask('')
+    }
     return (
         <form
             className="row g-3"
