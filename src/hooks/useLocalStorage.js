@@ -1,14 +1,18 @@
-import {useState, useEffect} from "react";
+import { useEffect, useReducer} from "react";
+import {reducer} from "../reducers/reducer";
 
 export const useLocalStorage = (key, value) => {
-  const [localList, setLocalList] = useState(() => {
+  const [state, dispatch] = useReducer(
+      reducer,
+      value,
+      () => {
       const item = window.localStorage.getItem(key)
       return item ? JSON.parse(item) : value
   })
     useEffect(() => {
-        const item = JSON.stringify(localList)
+        const item = JSON.stringify(state)
         window.localStorage.setItem(key, item)
-    }, [key, localList])
+    }, [key, state])
 
-    return [localList, setLocalList]
+    return [state, dispatch]
 }

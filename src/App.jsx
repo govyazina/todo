@@ -3,17 +3,15 @@ import {Main} from "./components/Main/Main";
 import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
 import {GlobalContext} from "./contexts/globalContext";
-import {useReducer} from "react";
-import {reducer} from "./reducers/reducer";
+import {useLocalStorage} from "./hooks/useLocalStorage";
 
 
 function App() {
     const initialState = {
-        task: '',
         taskList: [],
     }
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useLocalStorage('taskList', initialState)
 
 
     // const [taskList, setTaskList] = useLocalStorage('taskList', [])
