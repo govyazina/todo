@@ -3,8 +3,7 @@ import {useContext} from "react";
 import {GlobalContext} from "../../contexts/globalContext";
 
 export const TaskList = () => {
-	const {state} = useContext(GlobalContext)
-	const taskList = state.taskList
+	const {state: {taskList}} = useContext(GlobalContext)
 	return (
 		<div className="tasks">
 			{
