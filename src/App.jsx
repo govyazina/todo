@@ -11,7 +11,7 @@ function App() {
         taskList: [],
     }
 
-    const [state, dispatch] = useLocalStorage('taskList', initialState)
+    const [state, dispatch] = useLocalStorage('state', initialState)
 
 
     // const [taskList, setTaskList] = useLocalStorage('taskList', [])
