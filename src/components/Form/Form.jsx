@@ -1,11 +1,7 @@
 import {useContext, useState} from "react";
 import {GlobalContext} from "../../contexts/globalContext";
 
-const generateID = (function (n) {
-    return function () {
-        return n++
-    }
-})(1)
+const generateID =  () => Date.now()
 
 export const Form = () => {
     const {dispatch} = useContext(GlobalContext)
